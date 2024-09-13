@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Untitled</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700">
+
+    <!-- /// FontAwesome Icons 4.3.0 ////////  -->
+    <link rel="stylesheet" href="assets/fonts/fontawesome/font-awesome.min.css">
+
+    <!-- /// Custom Icon Font ////////  -->
+    <link rel="stylesheet" href="assets/fonts/iconfontcustom/icon-font-custom.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" /><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="testimonal.css">
+    <!-- /// Google Fonts ////////  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700">
+
+    <!-- /// FontAwesome Icons 4.3.0 ////////  -->
+    <link rel="stylesheet" href="assets/fonts/fontawesome/font-awesome.min.css">
+
+    <!-- /// Custom Icon Font ////////  -->
+    <link rel="stylesheet" href="assets/fonts/iconfontcustom/icon-font-custom.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+</head>
+
+<body>
+    <main data-aos="flip-right">
+        <section class="containerR">
+
+            <!-- <div class="headline" data-aos="zoom-in">
+
+                <h2 data-aos="zoom-in">Client testimonials</h2>
+
+
+            </div> -->
+            <!-- review -->
+            <article class="review">
+                <div class="img-containerR">
+                    <iframe width="100%" height="100%" id="person-iframe" src="https://www.youtube.com/embed/V0jW2k2840Q" title="Client testimonial: Paul Carse, CTO and Co-founder of Life Moments (FirstHomeCoach)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    <!-- <img src="person-1.jpeg" id="person-img" alt="" /> -->
+                </div>
+                <h4 id="author">Paul Carse</h4>
+                <p id="job"> CTO and Co-founder of Life Moments</p>
+                <p id="info">
+                    «We now have a core team of engineers at Relevant who work for us full-time and are supplemented by 4 or 5 engineers with different skillsets when and if required.»
+                </p>
+
+                <!-- prev next buttons-->
+                <div class="button-container">
+                    <button class="prev-btn">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+                    <button class="next-btn">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+                </div>
+                <!-- random button -->
+                <button class="random-btn">surprise me</button>
+            </article>
+        </section>
+    </main>
+    <script>
+        // local reviews data
+        const reviews = [{
+                id: 1,
+                name: "Paul Carse",
+                job: " CTO and Co-founder of Life Moments ",
+                // img: "pers.png",
+                iframe: "https://www.youtube.com/embed/V0jW2k2840Q",
+                text: "«We now have a core team of engineers at Relevant who work for us full-time and are supplemented by 4 or 5 engineers with different skillsets when and if required.»",
+            }, {
+                id: 2,
+                name: "Cassian Harrison",
+                job: " Co-founder of Splink Industries and My Theory Test App by James May ",
+                // img: "https://cdn-cfdja.nitrocdn.com/uOxxxDWjcukgNxoRlWCAPnOZsfFUWQlA/assets/static/optimized/rev-6c1cefb/wp-content/uploads/1612272389607.jpeg",
+                iframe: "https://www.youtube.com/embed/tUU7OMbWGp4",
+
+                text: "“Working with you guys has been fantastic. The level of expertise of your development team is as good as the people that we get in the UK. You’ve got a fantastic talent base of programmers. It’s more challenging to find people of that quality in the UK.”",
+            },
+
+        ];
+        // select items
+        const img = document.getElementById("person-img");
+        const iframe = document.getElementById("person-iframe");
+        const author = document.getElementById("author");
+        const job = document.getElementById("job");
+        const info = document.getElementById("info");
+
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+        const randomBtn = document.querySelector(".random-btn");
+
+        // set starting item
+        let currentItem = 0;
+
+        // load initial item
+        window.addEventListener("DOMContentLoaded", function() {
+            const item = reviews[currentItem];
+            img.src = item.img;
+            author.textContent = item.name;
+            job.textContent = item.job;
+            info.textContent = item.text;
+        });
+
+        // show person based on item
+        function showPerson(person) {
+            const item = reviews[person];
+            // img.src = item.img;
+            iframe.src = item.iframe;
+            author.textContent = item.name;
+            job.textContent = item.job;
+            info.textContent = item.text;
+        }
+        // show next person
+        nextBtn.addEventListener("click", function() {
+            currentItem++;
+            if (currentItem > reviews.length - 1) {
+                currentItem = 0;
+            }
+            showPerson(currentItem);
+        });
+        // show prev person
+        prevBtn.addEventListener("click", function() {
+            currentItem--;
+            if (currentItem < 0) {
+                currentItem = reviews.length - 1;
+            }
+            showPerson(currentItem);
+        });
+        // show random person
+        randomBtn.addEventListener("click", function() {
+            console.log("hello");
+
+            currentItem = Math.floor(Math.random() * reviews.length);
+            showPerson(currentItem);
+        });
+    </script>
+    <script src="https://unpkg.com/aos@3.0.0-beta.6/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 3000,
+            once: true,
+        });
+    </script>
+</body>
+
+</html>
+<!-- partial -->
+  
+</body>
+</html>
